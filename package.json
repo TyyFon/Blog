@@ -1,0 +1,8 @@
+{
+  "name": "Blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/TyyFon/Blog.git",
+  "author": "Grzegorz Wasik <wasikgrzegorz3@gmail.com>",
+  "license": "MIT"
+}
