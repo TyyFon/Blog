@@ -23,7 +23,7 @@ posts:[
     content: 'Main content of the article 3',
     publishedDate: '03-02-2022',
     author: 'John Doe 3'
-}
+},
 {
     id: '4',
     title: 'Article title 4',

@@ -3,7 +3,7 @@ import About from './components/pages/About/About.js'
 import AddPost from './components/pages/AddPost/AddPost.js'
 import EditPost from './components/pages/EditPost/EditPost.js'
 import Error from './components/pages/Error/Error.js'
-import Main from './components/pages/Main/Main.js'
+import Home from './components/pages/Home/Home.js'
 import Post from './components/pages/Post/Post.js'
 import { Container } from 'react-bootstrap';
 import Header from './components/vievs/Header/Header.js'
@@ -14,7 +14,7 @@ function App() {
     <Container>
       <Header />
       <Routes>
-        <Route path="/" element={<Main />} />
+        <Route path="/" element={<Home />} />
         <Route path="/post/:id" element={<Post />} />
         <Route path="/post/add" element={<AddPost />} />
         <Route path="/post/edit/:id" element={<EditPost />} />
