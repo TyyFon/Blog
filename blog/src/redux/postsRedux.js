@@ -7,7 +7,9 @@ const createActionName = actionName => `app/posts/${actionName}`;
 
 
 // action creators
+
 const postsReducer = (statePart = [], action) => {
+  //console.log (action)
   switch (action.type) {
      default:
       return statePart;

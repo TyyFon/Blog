@@ -1,4 +1,4 @@
-import getAllPosts from '../../../redux/postsRedux.js';
+import { getAllPosts } from '../../../redux/postsRedux.js';
 import { useSelector } from 'react-redux';
 import { Card, Row, Col, Button } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 const Posts = () => {
          
     const posts = useSelector(state => getAllPosts(state))
-
+console.log (posts);
     return (
       <section>
         <div className="d-flex justify-content-between">
