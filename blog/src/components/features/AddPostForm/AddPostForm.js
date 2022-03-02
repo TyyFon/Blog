@@ -1,4 +1,5 @@
-import PostAdd from '../../vievs/PostAdd/PostAdd.js';
+//import PostAdd from '../../vievs/PostAdd/PostAdd.js';\
+import PostForm from '../PostForm/PostForm.js'
 import { useDispatch } from 'react-redux';
 import { addPost } from '../../../redux/postsRedux.js';
 import { useNavigate } from 'react-router-dom';
@@ -14,7 +15,10 @@ const AddPostForm = () => {
   }
 
   return (
-    < PostAdd action={handleSubmit} />
+    <PostForm 
+        action={handleSubmit} 
+        actionText= {'Add post'}
+    />
   )
 }
 
