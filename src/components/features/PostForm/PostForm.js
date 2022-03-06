@@ -7,10 +7,10 @@ import PostContent from '../../vievs/PostFormInputs/PostContent';
 import styles from './PostForm.module.scss';
 
 
-const PostForm = ({ 
-    action, 
-    actionText, 
-    ...props }) => {
+const PostForm = ({
+  action,
+  actionText,
+  ...props }) => {
 
   const [title, setTitle] = useState(props.title || '');
   const [author, setAuthor] = useState(props.author || '');

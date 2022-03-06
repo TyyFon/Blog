@@ -8,7 +8,7 @@ import AddPostForm from '../../features/AddPostForm/AddPostForm';
 const PostForm = () => {
 
   return (
-    <AddPostForm  />
+    <AddPostForm />
   )
 }
 

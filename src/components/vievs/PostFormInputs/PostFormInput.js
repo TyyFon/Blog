@@ -3,14 +3,14 @@ import clsx from 'clsx';
 
 
 const PostFormInput = ({
-    controlId, 
-    label, 
-    placeholder, 
-    value, 
-    action, 
-    className
+  controlId,
+  label,
+  placeholder,
+  value,
+  action,
+  className
 }) => {
-  
+
   return (
     <Form.Group className={clsx("mb-3", className)} controlId={controlId}>
       <Form.Label>{label}</Form.Label>

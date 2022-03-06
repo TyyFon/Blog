@@ -19,12 +19,12 @@ export const editPost = payload => ({ type: EDIT_POST, payload });
 
 const postsReducer = (statePart = [], action) => {
   switch (action.type) {
-      case ADD_POST:
-        return [ ...statePart, { ...action.payload, id: shortid() }];
-      case REMOVE_POST:
-        return statePart.filter(post => post.id !== action.payload)
-      case EDIT_POST:
-        return statePart.map(post => post.id === action.payload.id ? { ...post, ...action.payload } : post)
+    case ADD_POST:
+      return [...statePart, { ...action.payload, id: shortid() }];
+    case REMOVE_POST:
+      return statePart.filter(post => post.id !== action.payload)
+    case EDIT_POST:
+      return statePart.map(post => post.id === action.payload.id ? { ...post, ...action.payload } : post)
     default:
       return statePart;
   };

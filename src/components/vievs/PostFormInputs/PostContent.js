@@ -2,14 +2,14 @@ import { Form } from 'react-bootstrap';
 
 
 const PostContent = ({
-    controlId, 
-    label, 
-    placeholder, 
-    value, 
-    action, 
-    rows
+  controlId,
+  label,
+  placeholder,
+  value,
+  action,
+  rows
 }) => {
-  
+
   return (
     <Form.Group className={"mb-3"} controlId={controlId}>
       <Form.Label>{label}</Form.Label>
