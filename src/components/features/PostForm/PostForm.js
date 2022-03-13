@@ -1,10 +1,10 @@
 import { Form, Button } from 'react-bootstrap';
 import { useState } from 'react';
-//import FormText from '../views/FormText';
-//import FormTextArea from '../views/FormTextArea';
 import PostFormInput from '../../vievs/PostFormInputs/PostFormInput';
 import PostContent from '../../vievs/PostFormInputs/PostContent';
 import styles from './PostForm.module.scss';
+import ReactQuill from 'react-quill';
+import 'react-quill/dist/quill.snow.css';
 
 
 const PostForm = ({
@@ -17,9 +17,11 @@ const PostForm = ({
   const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
   const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
   const [content, setContent] = useState(props.content || '');
+  //const [value, setValue] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
+    console.log('content:' , content)
     action({ title, author, publishedDate, shortDescription, content });
   }
 
@@ -57,15 +59,14 @@ const PostForm = ({
         action={setShortDescription}
         rows={3}
       />
-      <PostContent
-        controlId="formContent"
-        label="Main content"
-        placeholder="Enter content"
+      <ReactQuill
+        theme="snow"
         value={content}
-        action={setContent}
-        rows={10}
+        onChange={setContent}
       />
-      <Button variant="primary" type="submit">{actionText}</Button>
+      <div className={styles.buttonWrapper}>
+        <Button variant="primary" type="submit">{actionText}</Button>
+      </div>
     </Form>
   )
 }
