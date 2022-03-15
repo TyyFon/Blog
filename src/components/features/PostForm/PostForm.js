@@ -5,6 +5,9 @@ import PostContent from '../../vievs/PostFormInputs/PostContent';
 import styles from './PostForm.module.scss';
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+
 
 
 const PostForm = ({
@@ -17,11 +20,11 @@ const PostForm = ({
   const [publishedDate, setPublishedDate] = useState(props.publishedDate || '');
   const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
   const [content, setContent] = useState(props.content || '');
+  const [startDate, setStartDate] = useState(new Date());
   //const [value, setValue] = useState('');
 
   const handleSubmit = e => {
     e.preventDefault();
-    console.log('content:' , content)
     action({ title, author, publishedDate, shortDescription, content });
   }
 
@@ -43,14 +46,15 @@ const PostForm = ({
         action={setAuthor}
         className={styles.smallInput}
       />
-      <PostFormInput
+      <DatePicker selected={startDate} onChange={(date:Date) => setStartDate(toString(publishedDate))} />
+      {/* <PostFormInput
         controlId="formDate"
         label="Published"
         placeholder="Enter date"
         value={publishedDate}
         action={setPublishedDate}
         className={styles.smallInput}
-      />
+      /> */}
       <PostContent
         controlId="formDescription"
         label="Short description"
