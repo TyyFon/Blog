@@ -32,6 +32,20 @@ const initialState = {
             publishedDate: new Date ('04-12-2021'),
             author: 'John Doe 4'
         }
+    ],
+    categories: [
+        {
+            id: '5',
+            title: 'Sport'
+        },
+        {
+            id: '6',
+            title: 'News'
+        },
+        {
+            id: '7',
+            title: 'Movies'
+        }
     ]
 
 }

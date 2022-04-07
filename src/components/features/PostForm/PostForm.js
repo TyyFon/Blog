@@ -9,6 +9,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import dateToStr from '../Utils/dateToStr';
 import { useForm } from "react-hook-form";
+import { getAllCategories } from './../../../redux/categoriesRedux';
+import { useSelector } from 'react-redux';
 
 
 const PostForm = ({
@@ -24,6 +26,9 @@ const PostForm = ({
   const { register, handleSubmit: validate, formState: { errors } } = useForm();
   const [contentError, setContentError] = useState(false);
   const [dateError, setDateError] = useState(false);
+  const categories = useSelector(getAllCategories);
+  const [category, setCategory] = useState(props.category || '');
+  const [categoryError, setCategoryError] = useState(false);
   //const [startDate, setStartDate] = useState(new Date());
   //const [value, setValue] = useState('');
 
@@ -31,6 +36,7 @@ const PostForm = ({
     e.preventDefault();
     setContentError(!content)
     setDateError(!publishedDate)
+    setCategoryError(!category)
     if(!content || !publishedDate); 
     else action({ title, author, publishedDate, shortDescription, content });
     };
@@ -64,13 +70,26 @@ const PostForm = ({
         Author is too short (min is 3)
       </small>}
       <DatePicker 
-      selected={dateToStr(publishedDate)} 
-      onChange={(date) => setPublishedDate(dateToStr(date))} 
+        selected={dateToStr(publishedDate)} 
+        onChange={(date) => setPublishedDate(dateToStr(date))} 
       />
-      {contentError && <small 
+      {dateError && <small 
         className="d-block form-text text-danger mt-2">
-          Content can't be empty
+        Content can't be empty
       </small>}
+      <Form.Group className="mb-3 col-md-4">
+        <Form.Label>Category</Form.Label>
+        <Form.Control 
+          as="select" 
+          value={category} 
+          onChange={e => setCategory(e.target.value)}>
+          <option>
+            Select category...
+          </option>
+          {categories.map(category => <option key={category.id} value={category.title}>{category.title}</option>)}
+        </Form.Control>
+        {categoryError && <small className="d-block form-text text-danger mt-2">Select category!</small>}
+      </Form.Group>
       <PostContent
         controlId="formDescription"
         label="Short description"
