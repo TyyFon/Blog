@@ -5,7 +5,7 @@ const initialState = {
             title: 'Article title',
             shortDescription: 'Short description of the article...',
             content: 'Main content of the article',
-            publishedDate: '01-12-2021',
+            publishedDate: new Date ('01-12-2021'),
             author: 'John Doe'
         },
         {
@@ -13,7 +13,7 @@ const initialState = {
             title: 'Article title 2',
             shortDescription: 'Short description of the article 2...',
             content: 'Main content of the article 2',
-            publishedDate: '02-12-2021',
+            publishedDate: new Date ('02-12-2021'),
             author: 'John Doe 2'
         },
         {
@@ -21,7 +21,7 @@ const initialState = {
             title: 'Article title 3',
             shortDescription: 'Short description of the article 3...',
             content: 'Main content of the article 3',
-            publishedDate: '03-12-2021',
+            publishedDate: new Date ('03-12-2021'),
             author: 'John Doe 3'
         },
         {
@@ -29,7 +29,7 @@ const initialState = {
             title: 'Article title 4',
             shortDescription: 'Short description of the article 4...',
             content: 'Main content of the article 4',
-            publishedDate: '04-12-2021',
+            publishedDate: new Date ('04-12-2021'),
             author: 'John Doe 4'
         }
     ]

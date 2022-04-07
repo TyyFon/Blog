@@ -1,7 +1,8 @@
 
-const dateToStr = () => {
-console.log('dateToStr')
-    
-}
+const dateToStr = dateObj => (
+    dateObj.getMonth() + 1 + 
+    '/' + dateObj.getDate() + 
+    '/' + dateObj.getFullYear()
+);
 
-export default dateToStr
+export default dateToStr;
