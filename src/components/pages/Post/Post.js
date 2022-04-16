@@ -6,6 +6,7 @@ import { Navigate } from 'react-router-dom';
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import { removePost } from '../../../redux/postsRedux.js';
+import dateToStr from '../../features/Utils/dateToStr.js';
 
 const Post = () => {
 
@@ -39,7 +40,7 @@ const Post = () => {
                     </Col>
                 </Row>
                 <h3 className="mb-3">{postData.author}</h3>
-                <h4 className="mb-4">{postData.publishedDate}</h4>
+                <h4 className="mb-4">{dateToStr(postData.publishedDate)}</h4>
                 <p dangerouslySetInnerHTML={{ __html: postData.content }} />
             </article>
             <Modal show={show} onHide={handleClose}>

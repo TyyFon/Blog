@@ -7,7 +7,7 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-import dateToStr from '../Utils/dateToStr';
+//import dateToStr from '../Utils/dateToStr';
 import { useForm } from "react-hook-form";
 import { getAllCategories } from './../../../redux/categoriesRedux';
 import { useSelector } from 'react-redux';
@@ -17,13 +17,13 @@ const PostForm = ({
   action,
   actionText,
   ...props }) => {
-
+console.log('props:' , props);
   const [title, setTitle] = useState(props.title || '');
   const [author, setAuthor] = useState(props.author || '');
   const [publishedDate, setPublishedDate] = useState(new Date() || '');
   const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
   const [content, setContent] = useState(props.content || '');
-  const { register, handleSubmit: validate, formState: { errors } } = useForm();
+  //const { register, handleSubmit: validate, formState: { errors } } = useForm();
   const [contentError, setContentError] = useState(false);
   const [dateError, setDateError] = useState(false);
   const categories = useSelector(getAllCategories);
@@ -31,64 +31,62 @@ const PostForm = ({
   const [categoryError, setCategoryError] = useState(false);
   //const [startDate, setStartDate] = useState(new Date());
   //const [value, setValue] = useState('');
-
+  
   const handleSubmit = e => {
     e.preventDefault();
     setContentError(!content)
     setDateError(!publishedDate)
     setCategoryError(!category)
     if(!content || !publishedDate); 
-    else action({ title, author, publishedDate, shortDescription, content });
+    else action({ title, author, publishedDate, shortDescription, content, category });
     };
-
-
+   
   return (
-    <Form onSubmit={validate(handleSubmit)} className={styles.form}>
+    <Form onSubmit={handleSubmit} className={styles.form}>
       <PostFormInput
         controlId="formTitle"
         label="Title"
         placeholder="Enter title"
         value={title}
         action={setTitle}
-        {...register("title", { required: true, minLength: 3 })}
+        // {...register("title", { required: true, minLength: 3 })}
       />
-      {errors.title && <small 
+      {/* {errors.title && <small 
       className="d-block form-text text-danger mt-2">
         Title is too short (min is 3)
-      </small>}
+      </small>} */}
       <PostFormInput
         controlId="formAuthor"
         label="Author"
         placeholder="Enter author"
         value={author}
         action={setAuthor}
-        {...register("author", { required: true, minLength: 3 })}
-        className={styles.smallInput}
+        // {...register("author", { required: true, minLength: 3 })}
+        // className={styles.smallInput}
       />
-      {errors.title && <small 
+      {/* {errors.title && <small 
         className="d-block form-text text-danger mt-2">
         Author is too short (min is 3)
-      </small>}
+      </small>} */}
       <DatePicker 
-        selected={dateToStr(publishedDate)} 
-        onChange={(date) => setPublishedDate(dateToStr(date))} 
+        selected={publishedDate} 
+        onChange={(date) => setPublishedDate(date)} 
       />
-      {dateError && <small 
+      {/* {dateError && <small 
         className="d-block form-text text-danger mt-2">
         Content can't be empty
-      </small>}
+      </small>} */}
       <Form.Group className="mb-3 col-md-4">
         <Form.Label>Category</Form.Label>
-        <Form.Control 
-          as="select" 
+        <Form.Select 
           value={category} 
           onChange={e => setCategory(e.target.value)}>
           <option>
             Select category...
           </option>
-          {categories.map(category => <option key={category.id} value={category.title}>{category.title}</option>)}
-        </Form.Control>
-        {categoryError && <small className="d-block form-text text-danger mt-2">Select category!</small>}
+          {categories.map(category => <option key={category.id} value={category.titleid}>{category.title}</option>)}
+        </Form.Select>
+        {/* {categoryError && <small className="d-block form-text text-danger mt-2">Select category!</small>} */}
       </Form.Group>
       <PostContent
         controlId="formDescription"
@@ -96,22 +94,22 @@ const PostForm = ({
         placeholder="Enter description"
         value={shortDescription}
         action={setShortDescription}
-        {...register("shortDescription", { required: true, minLength: 20 })}
-        rows={3}
+        // {...register("shortDescription", { required: true, minLength: 20 })}
+        // rows={3}
       />
-       {errors.title && <small 
+       {/* {errors.title && <small 
         className="d-block form-text text-danger mt-2">
-        Author is too short (min is 3)
-      </small>}
+        Content is too short (min is 20)
+      </small>} */}
       <ReactQuill
         theme="snow"
         value={content}
         onChange={setContent}
       />
-      {contentError && <small 
+      {/* {contentError && <small 
         className="d-block form-text text-danger mt-2">
           Content can't be empty
-      </small>}
+      </small>} */}
       <div className={styles.buttonWrapper}>
         <Button variant="primary" type="submit">{actionText}</Button>
       </div>

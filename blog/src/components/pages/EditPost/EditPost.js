@@ -4,7 +4,7 @@ const EditPost = () => {
     return (
         <>
             <h1>EditPost</h1>
-            <EditPostForm />
+            {/* <EditPostForm /> */}
         </>
     )
 }
