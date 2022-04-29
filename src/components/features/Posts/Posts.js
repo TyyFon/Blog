@@ -26,7 +26,7 @@ const Posts = () => {
                   <Card.Subtitle className="mt-2"><span className="fw-bold">Author: </span>{post.author}</Card.Subtitle>
                   <Card.Subtitle className="mt-2"><span className="fw-bold">Published: </span>{dateToStr(post.publishedDate)}</Card.Subtitle>
                   <Card.Text className="mt-2">{post.shortDescription}</Card.Text>
-                  {/* <Card.Subtitle className="mt-2">{post.category}</Card.Subtitle> */}
+                  <Card.Subtitle className="mt-2">{post.category}</Card.Subtitle>
                   <Link className="mt-auto" key={post.id} to={`/post/${post.id}`}>
                     <Button variant="primary" className="mt-2">Read more</Button>
                   </Link>
